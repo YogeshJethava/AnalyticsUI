@@ -34,7 +34,7 @@ class MenuWidget extends StatelessWidget {
         ),
         buildMenuCard(),
         const SizedBox(
-          height: 20,
+          height: 12,
         ),
         buildSellingCategory()
       ],
@@ -78,30 +78,46 @@ class MenuWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                width: 180,
-                height: 180,
-                alignment: Alignment.centerLeft,
-                child: SfCircularChart(
-                    series: <RadialBarSeries<RadialChartDataModel, int>>[
-                      RadialBarSeries<RadialChartDataModel, int>(
-                          useSeriesColor: false,
-                          trackOpacity: 0.3,
-                          cornerStyle: CornerStyle.bothCurve,
-                          dataSource: _controller.viewModel.chartData,
-                          pointRadiusMapper: (RadialChartDataModel data, _) =>
-                              data.title,
-                          pointColorMapper: (RadialChartDataModel data, _) =>
-                              data.color,
-                          xValueMapper: (RadialChartDataModel sales, _) => 0,
-                          yValueMapper: (RadialChartDataModel sales, _) =>
-                              sales.percentage.toInt(),
-                          trackColor: ColorConstants.dividerColor,
-                          radius: "70%",
-                          gap: "12%",
-                          maximumValue: 100,
-                          enableTooltip: true)
-                    ]),
+              Stack(
+                children: [
+                  Container(
+                    width: 150,
+                    height: 150,
+                    alignment: Alignment.centerLeft,
+                    child: SfCircularChart(
+                        series: <RadialBarSeries<RadialChartDataModel, int>>[
+                          RadialBarSeries<RadialChartDataModel, int>(
+                              useSeriesColor: false,
+                              trackOpacity: 0.3,
+                              cornerStyle: CornerStyle.bothCurve,
+                              dataSource: _controller.viewModel.chartData,
+                              pointRadiusMapper: (RadialChartDataModel data, _) =>
+                                  data.title,
+                              pointColorMapper: (RadialChartDataModel data, _) =>
+                                  data.color,
+                              xValueMapper: (RadialChartDataModel sales, _) => 0,
+                              yValueMapper: (RadialChartDataModel sales, _) =>
+                                  sales.percentage.toInt(),
+                              trackColor: ColorConstants.dividerColor,
+                              radius: "100%",
+                              gap: "12%",
+                              maximumValue: 100,
+                              enableTooltip: true)
+                        ]),
+                  ),
+                  Positioned.fill(
+                    top: 60,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Total",style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(fontSize: 10,fontWeight: FontWeight.w400,color: ColorConstants.textColor03)),),
+                        const SizedBox(height: 4,),
+                        Text("₹20k",style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(fontSize: 12,fontWeight: FontWeight.w600,color: ColorConstants.textColor04)),),
+
+                      ],
+                    ),
+                  )
+                ],
               ),
               Expanded(
                   child: SizedBox(height: 120, child: buildSalesCategoryList()))
@@ -289,79 +305,103 @@ class MenuWidget extends StatelessWidget {
             height: 12,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: 180,
-                height: 180,
-                alignment: Alignment.centerLeft,
-                child: g.SfRadialGauge(
-                  axes: <g.RadialAxis>[
-                    g.RadialAxis(
-                      showLabels: false,
-                      showAxisLine: false,
-                      showTicks: false,
-                      minimum: 0,
-                      maximum: 99,
-                      radiusFactor: 1,
-                      startAngle: 180,
-                      endAngle: 360,
-                      ranges: <g.GaugeRange>[
-                        g.GaugeRange(
-                            startValue: 0,
-                            endValue: 60,
-                            color: ColorConstants.paymentMode01,
-                            label: '',
-                            sizeUnit: g.GaugeSizeUnit.factor,
-                            startWidth: 0.65,
-                            endWidth: 0.65),
-                        g.GaugeRange(
-                          startValue: 60,
-                          endValue: 70,
-                          color: ColorConstants.paymentMode08,
-                          label: '',
-                          startWidth: 0.65,
-                          endWidth: 0.65,
-                          sizeUnit: g.GaugeSizeUnit.factor,
-                        ),
-                        g.GaugeRange(
-                          startValue: 70,
-                          endValue: 80,
-                          color: ColorConstants.paymentMode03,
-                          label: '',
-                          sizeUnit: g.GaugeSizeUnit.factor,
-                          startWidth: 0.65,
-                          endWidth: 0.65,
-                        ),
-                        g.GaugeRange(
-                          startValue: 80,
-                          endValue: 90,
-                          color: ColorConstants.primaryColor,
-                          label: '',
-                          sizeUnit: g.GaugeSizeUnit.factor,
-                          startWidth: 0.65,
-                          endWidth: 0.65,
-                        ),
-                        g.GaugeRange(
-                          startValue: 90,
-                          endValue: 100,
-                          color: ColorConstants.paymentMode02,
-                          label: '',
-                          sizeUnit: g.GaugeSizeUnit.factor,
-                          startWidth: 0.65,
-                          endWidth: 0.65,
-                        ),
-                      ],
-                      pointers: const <g.GaugePointer>[
+                width: 150,
+                height: 150,
+                alignment: Alignment.center,
+                child: Stack(
+                  children: [
+                    g.SfRadialGauge(
+                      axes: <g.RadialAxis>[
+                        g.RadialAxis(
+                          showLabels: false,
+                          showAxisLine: false,
+                          showTicks: false,
+                          minimum: 0,
+                          maximum: 100,
+                          radiusFactor: 0.6,
+                          startAngle: 180,
+                          endAngle: 360,
+                          ranges: <g.GaugeRange>[
+                            g.GaugeRange(
+                                startValue: 0,
+                                endValue: 50,
+                                color: ColorConstants.paymentMode01,
+                                label: '',
+                                sizeUnit: g.GaugeSizeUnit.factor,
+                                startWidth: 0.65,
+                                endWidth: 0.65,
+                              rangeOffset: -0.4,
 
+                            ),
+                            g.GaugeRange(
+                              startValue: 50,
+                              endValue: 62.5,
+                              color: ColorConstants.paymentMode08,
+                              label: '',
+                              startWidth: 0.65,
+                              endWidth: 0.65,
+                              sizeUnit: g.GaugeSizeUnit.factor,
+                              rangeOffset: -0.4,
+                            ),
+                            g.GaugeRange(
+                              startValue: 62.5,
+                              endValue: 75,
+                              color: ColorConstants.paymentMode03,
+                              label: '',
+                              sizeUnit: g.GaugeSizeUnit.factor,
+                              startWidth: 0.65,
+                              endWidth: 0.65,
+                              rangeOffset: -0.4,
+                            ),
+                            g.GaugeRange(
+                              startValue: 75,
+                              endValue: 87.5,
+                              color: ColorConstants.primaryColor,
+                              label: '',
+                              sizeUnit: g.GaugeSizeUnit.factor,
+                              startWidth: 0.65,
+                              endWidth: 0.65,
+                              rangeOffset: -0.4,
+                            ),
+                            g.GaugeRange(
+                              startValue: 87.5,
+                              endValue: 100,
+                              color: ColorConstants.paymentMode02,
+                              label: '',
+                              sizeUnit: g.GaugeSizeUnit.factor,
+                              startWidth: 0.65,
+                              endWidth: 0.65,
+                              rangeOffset: -0.4,
+                            ),
+                          ],
+                          pointers: const <g.GaugePointer>[
+
+                          ],
+                          canScaleToFit: true,
+                        )
                       ],
+                    ),
+                    Positioned.fill(
+                      top: 100,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Total",style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(fontSize: 10,fontWeight: FontWeight.w400,color: ColorConstants.textColor03)),),
+                          const SizedBox(height: 4,),
+                          Text("₹45,000",style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(fontSize: 12,fontWeight: FontWeight.w600,color: ColorConstants.textColor04)),),
+
+                        ],
+                      ),
                     )
                   ],
                 ),
               ),
               Expanded(
-                  child: SizedBox(
-                      height: 120, child: buildTopSellingCategoryList()))
+                  child: buildTopSellingCategoryList())
             ],
           )
         ],

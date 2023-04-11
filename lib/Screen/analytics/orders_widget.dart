@@ -218,10 +218,7 @@ class OrdersWidget extends StatelessWidget {
               const SizedBox(
                 width: 8,
               ),
-              const Icon(
-                Icons.arrow_drop_down_sharp,
-                color: ColorConstants.textColorRed,
-              )
+              Image.asset(IconConstants.downArrow,width: 20,height: 20,color: ColorConstants.textColorRed,)
             ],
           )
         ],
@@ -266,10 +263,7 @@ class OrdersWidget extends StatelessWidget {
                const SizedBox(
                  width: 8,
                ),
-               const Icon(
-                 Icons.arrow_drop_up_sharp,
-                 color: ColorConstants.green,
-               )
+               Image.asset(IconConstants.upArrow,width: 20,height: 20,color: ColorConstants.green,)
              ],
            )
          ],

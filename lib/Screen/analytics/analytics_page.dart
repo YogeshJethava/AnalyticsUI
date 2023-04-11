@@ -34,11 +34,11 @@ class AnalyticsPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       children: [
         SizedBox(height: 420,child: SalesWidget()),
-        SizedBox(height: 32,),
+        const SizedBox(height: 20,),
         SizedBox(height: 600,child: OrdersWidget()),
-        SizedBox(height: 32,),
-        SizedBox(height: 550,child: PaymentWidget()),
-        SizedBox(height: 670,child: MenuWidget()),
+        const SizedBox(height: 20,),
+        SizedBox(height: 520,child: PaymentWidget()),
+        SizedBox(height: 640,child: MenuWidget()),
         SizedBox(height: 1000,child: WaiterWidget())
       ],
     );

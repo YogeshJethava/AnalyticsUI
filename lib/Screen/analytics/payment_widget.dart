@@ -68,15 +68,15 @@ class PaymentWidget extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Expanded(flex: 20,child: Container(color: ColorConstants.paymentMode01,),),
+                  Expanded(flex: 25,child: Container(color: ColorConstants.paymentMode01,),),
                   Expanded(flex: 5,child: Container(color: ColorConstants.paymentMode02,),),
                   Expanded(flex: 10,child: Container(color: ColorConstants.paymentMode03,),),
                   Expanded(flex: 0,child: Container(color: ColorConstants.paymentMode04,),),
-                  Expanded(flex: 2,child: Container(color: ColorConstants.paymentMode05,),),
+                  Expanded(flex: 3,child: Container(color: ColorConstants.paymentMode05,),),
                   Expanded(flex: 0,child: Container(color: ColorConstants.paymentMode06,),),
-                  Expanded(flex: 5,child: Container(color: ColorConstants.paymentMode07,),),
+                  Expanded(flex: 3,child: Container(color: ColorConstants.paymentMode07,),),
                   Expanded(flex: 3,child: Container(color: ColorConstants.paymentMode08,),),
-                  Expanded(flex: 2,child: Container(color: ColorConstants.paymentMode09,),),
+                  Expanded(flex: 3,child: Container(color: ColorConstants.green,),),
                 ],
               ),
             ),
@@ -169,10 +169,7 @@ class PaymentWidget extends StatelessWidget {
               const SizedBox(
                 width: 8,
               ),
-              const Icon(
-                Icons.arrow_drop_down_sharp,
-                color: ColorConstants.textColorRed,
-              )
+              Image.asset(IconConstants.downArrow,width: 20,height: 20,color: ColorConstants.textColorRed,)
             ],
           )
         ],
@@ -216,34 +213,40 @@ class PaymentWidget extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
+          Flexible(
             child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(paymentModeModel.numberOfTransaction,
-                    style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(
-                        color: ColorConstants.textColor02,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12))),
-                const SizedBox(width: 4,),
-                Visibility(
-                  visible: paymentModeModel.numberOfTransaction != "",
-                  child: Text("Transactions",
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(paymentModeModel.numberOfTransaction,
+                          style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(
+                              color: ColorConstants.textColor02,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12))),
+                      const SizedBox(width: 4,),
+                      Visibility(
+                        visible: paymentModeModel.numberOfTransaction != "",
+                        child: Text("Transactions",
+                            style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(
+                                color: ColorConstants.textColor02,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 10))),
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Text(paymentModeModel.amount,textAlign: TextAlign.right,
                       style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(
                           color: ColorConstants.textColor02,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10))),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600))),
                 )
               ],
             ),
-          ),
-          Expanded(
-            child: Text(paymentModeModel.amount,textAlign: TextAlign.right,
-                style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(
-                    color: ColorConstants.textColor02,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600))),
           )
         ],
       ),

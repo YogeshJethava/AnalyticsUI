@@ -8,6 +8,7 @@ abstract class ColorConstants {
  static const Color textColor01 = Color(0xff404040);
  static const Color textColor02 = Color(0xff525252);
  static const Color textColor03 = Color(0xff737373);
+ static const Color textColor04 = Color(0xff262626);
  static const Color errorColor  = Colors.redAccent;
  static const Color black = Colors.black;
  static const Color backgroundColor = Color(0xffF5F5F5);

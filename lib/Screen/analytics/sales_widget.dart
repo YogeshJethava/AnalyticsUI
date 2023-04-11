@@ -58,7 +58,7 @@ class SalesWidget extends StatelessWidget {
                 color: ColorConstants.dividerColor,
               ),
               const SizedBox(
-                height: 20,
+                height: 14,
               ),
               buildRevenueRow(
                   title: "Revenue per available seat hour",
@@ -131,10 +131,7 @@ class SalesWidget extends StatelessWidget {
               const SizedBox(
                 width: 8,
               ),
-              const Icon(
-                Icons.arrow_drop_up_sharp,
-                color: ColorConstants.green,
-              )
+              Image.asset(IconConstants.upArrow,width: 20,height: 20,color: ColorConstants.green,)
             ],
           )
         ],

@@ -136,13 +136,13 @@ class WaiterWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 7,
+                    flex: 8,
                     child: Container(
                       color: ColorConstants.orderColor01,
                     ),
                   ),
                   Expanded(
-                    flex: 3,
+                    flex: 2,
                     child: Container(
                       color: ColorConstants.orderColor04,
                     ),
@@ -259,10 +259,7 @@ class WaiterWidget extends StatelessWidget {
               const SizedBox(
                 width: 8,
               ),
-              const Icon(
-                Icons.arrow_drop_down_sharp,
-                color: ColorConstants.textColorRed,
-              )
+              Image.asset(IconConstants.downArrow,width: 20,height: 20,color: ColorConstants.textColorRed,)
             ],
           )
         ],
@@ -344,7 +341,7 @@ class WaiterWidget extends StatelessWidget {
   Widget buildTopPerformingWaiter() {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      //padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -360,81 +357,95 @@ class WaiterWidget extends StatelessWidget {
                 blurRadius: 3,
                 spreadRadius: 0)
           ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          buildTopPerformingTitleRow(),
-          const SizedBox(
-            height: 16,
-          ),
-          Row(
-            children: [
-              buildProfilePicture(),
-              const SizedBox(
-                width: 8,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Devon Lane",
-                        style: _themeData.textTheme.bodyMedium!.merge(
-                            const TextStyle(
-                                color: ColorConstants.textColor02,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600)),
+          Positioned(right: 4,bottom: 4,child: Image.asset(IconConstants.starOutline,width: 100,height: 100,)),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildTopPerformingTitleRow(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  children: [
+                    buildProfilePicture(),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  "Devon Lane",
+                                  style: _themeData.textTheme.bodyMedium!.merge(
+                                      const TextStyle(
+                                          color: ColorConstants.textColor02,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600)),
+                                ),
+                                Text(
+                                  "Waiter",
+                                  style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(
+                                      color: ColorConstants.textColor02,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text("8501945495",
+                              style: _themeData.textTheme.bodyMedium!.merge(
+                                  const TextStyle(
+                                      color: ColorConstants.textColor03,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500))),
+                        ],
                       ),
-                      /*Text(
-                        "Waiter",
-                        style: _themeData.textTheme.bodyMedium!.merge(const TextStyle(
-                            color: ColorConstants.textColor02,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600)),
-                      ),*/
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  Text("8501945495",
-                      style: _themeData.textTheme.bodyMedium!.merge(
-                          const TextStyle(
-                              color: ColorConstants.textColor03,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500))),
-                ],
-              ),
-            ],
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child:
+                            buildTitleValueBox(title: "Total Orders", value: "35")),
+                    Expanded(
+                        child: buildTitleValueBox(
+                            title: "Total Sales", value: "₹2,000")),
+                    Expanded(
+                        child: buildTitleValueBox(
+                            title: "Tips", value: "₹200", isShowBorder: false)),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Divider(
+                  height: 0.5,
+                  thickness: 0.5,
+                  indent: 20,
+                  endIndent: 20,
+                  color: ColorConstants.dividerColor,
+                ),
+                buildViewTopFive(),
+              ],
+            ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Expanded(
-                  child:
-                      buildTitleValueBox(title: "Total Orders", value: "35")),
-              Expanded(
-                  child: buildTitleValueBox(
-                      title: "Total Sales", value: "₹2,000")),
-              Expanded(
-                  child: buildTitleValueBox(
-                      title: "Tips", value: "₹200", isShowBorder: false)),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Divider(
-            height: 0.5,
-            thickness: 0.5,
-            indent: 20,
-            endIndent: 20,
-            color: ColorConstants.dividerColor,
-          ),
-          buildViewTopFive(),
         ],
       ),
     );
@@ -444,7 +455,7 @@ class WaiterWidget extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            decoration: BoxDecoration(shape: BoxShape.circle),
+            decoration: const BoxDecoration(shape: BoxShape.circle),
             clipBehavior: Clip.hardEdge,
             width: 40,
             height: 40,
@@ -474,7 +485,7 @@ class WaiterWidget extends StatelessWidget {
       children: [
         const Icon(
           Icons.star,
-          color: ColorConstants.yellow,
+          color: ColorConstants.paymentMode08,
           size: 24,
         ),
         const SizedBox(
